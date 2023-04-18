@@ -173,7 +173,7 @@ async function readExelFile() {
 	filename = 'table'
 	
 	//rl.question('please, enter file name or path to file with file name (оставьте поле пустым для автоматической загрузки таблицы вопросов идущей в архиве):\n> ', function (name) {
-		filename = name || 'table'
+		//filename = name || 'table'
 		
 		var extension = filename.substring(filename.lastIndexOf(".")).toUpperCase();
 		if (extension != '.XLS' && extension != '.XLSX')
