@@ -1,0 +1,280 @@
+@font-face {
+    font-family: Sansation; /* Имя шрифта */
+    src: url(font/Sansation_Regular.ttf); /* Путь к файлу со шрифтом */
+ }
+
+ button{
+	border-color: rgb(0, 163, 255);
+	color: #fff;
+	box-shadow: 0 0 40px 40px rgb(0, 163, 255) inset, 0 0 0 0 rgb(0, 163, 255);
+	-webkit-transition: all 150ms ease-in-out;
+	transition: all 150ms ease-in-out;
+ }
+
+ button:hover {
+	box-shadow: 0 0 10px 0 rgb(0, 163, 255) inset, 0 0 10px 4px rgb(0, 163, 255);
+	color: rgb(0, 163, 255);
+  }
+
+.start{
+	margin-top: 160px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+	height: 200%;
+}
+
+#welcome-text{
+	font-family: 'Sansation';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 128px;
+	line-height: 16px;
+	line-height: 49px;
+
+	/* Своя игра */
+
+	color: #00A3FF;
+}
+
+#create-room{
+	width: 210px;
+	height: 50px;
+	margin-top: -60px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
+	border:none;
+}
+
+#join-room{
+	width: 210px;
+	height: 50px;
+	margin-top:10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
+	border:none;
+}
+
+#about-game{
+	width: 210px;
+	height: 50px;
+	margin-top:10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
+	border:none;
+}
+
+#about-game-text{
+	font-size: 35px;
+	margin-left: 40px;
+	margin-top: 50px;
+	margin-right: 40px;
+}
+
+#about-game-menu{
+	color: #FFFFFF;
+	background: rgb(0, 163, 255);
+	border-radius: 40px;
+	border:none;
+	width: 80%;
+	height: 70%;
+}
+
+#about-game-close{
+	background: hsl(202, 100%, 41%);
+	border-color: hsl(202, 100%, 40%);
+	border-style: solid;
+	border-radius: 50%;
+	font-size: 50px;
+	color: white;
+	width: 60px;
+	height: 60px;
+}
+
+dialog[open] {
+    -webkit-animation: show 1s ease normal;
+}
+@-webkit-keyframes show {
+    from {
+        transform: translateY(-110%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.team{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+}
+
+#team{	margin-top:10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	color: #FFFFFF;
+	background: #1400FF;
+	border-radius: 10px;
+	border:none;
+}
+
+#information{
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 50px;
+	line-height: 49px;
+	color: #000000;
+}
+
+#create-team{
+	height: 50px;
+	margin-top:-30px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
+	border:none;
+}
+
+#submit-teams{
+	height: 50px;
+	margin-top:10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
+	border:none;
+}
+
+#balance_change {
+    opacity: 0;
+}
+#question {
+	display: none;
+}
+#submit {
+	display: none;
+}
+
+#answer-button {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#table {
+    /*width: 80%;
+    height: 80%;
+    margin-top: 10px;
+	position: absolute */
+	border: 5px;
+    border-color: black;
+    border-spacing: 5px;
+    empty-cells: hide;
+}
+
+.question-select {
+	width: 100%;
+	height: 100%;
+}
+
+.table-element {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	/* background-color: #F00; */
+	align-items: center;
+} 
+
+.main-content {
+	display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+	
+}
+
+.reply-div {
+    display: none
+}
+
+#question-image {
+	width: 100%;
+	border: 5px;
+    border-color: black;
+    border-spacing: 5px;
+}
+
+#username{
+	box-sizing: border-box;
+	width: 350px;
+	height: 47px;
+	background: #E2F5FF;
+	border: 2px solid #00A3FF;
+	border-radius: 10px;
+
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 16px;
+	color: rgba(0, 0, 0, 0.36);
+}
+
+#submit_username{
+	margin-top: 10px;
+	width: 155px;
+	height: 40px;
+	border-radius: 10px;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 23px;
+	line-height: 16px;
+	border:none;
+}
+
+#information{
+	width: 563px;
+	height: 50px;
+	font-family: 'Sansation';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 64px;
+	color: #00A3FF;
+}
+
+.id{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+}
+
+textarea {vertical-align:center;}

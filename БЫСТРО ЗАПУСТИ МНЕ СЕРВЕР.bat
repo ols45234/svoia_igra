@@ -1,0 +1,3 @@
+@echo off
+echo launching....
+node server
