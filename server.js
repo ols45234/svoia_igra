@@ -1,4 +1,5 @@
-﻿const XLSX = require('xlsx');
+﻿console.log('loading...')
+const XLSX = require('xlsx');
 const readline = require('readline');
 const express = require('express');
 const app = express();
