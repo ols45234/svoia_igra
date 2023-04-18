@@ -177,7 +177,7 @@ async function readExelFile() {
 		
 		var extension = filename.substring(filename.lastIndexOf(".")).toUpperCase();
 		if (extension != '.XLS' && extension != '.XLSX')
-			filename += '.XLSX'
+			filename += '.xlsx'
 
 		try {
 			var workbook = XLSX.readFile(filename);
