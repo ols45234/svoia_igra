@@ -11,7 +11,7 @@ folder.use(bodyParser.json())
 folder.use(express.static(`${__dirname}/webpage`));
 
 app.use(bodyParser.json());
-folder.use(express.static(`${__dirname}/webpage`));
+app.use(express.static(`${__dirname}/webpage`));
 
 const rl = readline.createInterface({
   input: process.stdin,
