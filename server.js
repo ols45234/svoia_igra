@@ -11,6 +11,7 @@ folder.use(bodyParser.json())
 folder.use(express.static(`${__dirname}/webpage`));
 
 app.use(bodyParser.json());
+folder.use(express.static(`${__dirname}/webpage`));
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -237,9 +238,10 @@ async function processFile(exelFile) {
 	pack.roomID = 0
 
 	app.listen(8000, () => {
-		folder.listen(process.env.PORT || PORT, () => {
+		/*folder.listen(process.env.PORT || PORT, () => {
 			console.log(`server started!`)
-		});
+		});*/
+		console.log(`server started!`)
 	});
 }
 
