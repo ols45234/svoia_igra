@@ -1,4 +1,4 @@
-﻿var result = [];
+55﻿var result = [];
 var blockNow = {};
 var balance = 0;
 var gameData = {};
@@ -237,7 +237,7 @@ function join_room() {
 		.then(async function (data) {
 			roomsData = data
 		})
-		.catch(err => { console.log(err); alert('can\'t connect to servers'); debugger; })
+		.catch(err => { console.log(err); alert('can\'t connect to ' + serverIp); debugger; })
 	
 }
 
