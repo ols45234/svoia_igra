@@ -236,8 +236,8 @@ async function processFile(exelFile) {
 	pack.maxPlayers = 3
 	pack.roomID = 0
 
-	app.listen(process.env.PORT || PORT, () => {
-		folder.listen(8000, () => {
+	app.listen(8000, () => {
+		folder.listen(process.env.PORT || PORT, () => {
 			console.log(`server started!`)
 		});
 	});
