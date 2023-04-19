@@ -1,4 +1,4 @@
-55﻿var result = [];
+var result = [];
 var blockNow = {};
 var balance = 0;
 var gameData = {};
