@@ -2,12 +2,15 @@
 const XLSX = require('xlsx');
 const readline = require('readline');
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
 
+const app = express();
+const folder = express();
+
+folder.use(bodyParser.json())
+folder.use(express.static(`${__dirname}/webpage`));
+
 app.use(bodyParser.json());
- 
-app.use(express.static(`${__dirname}/webpage`));
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -233,8 +236,10 @@ async function processFile(exelFile) {
 	pack.maxPlayers = 3
 	pack.roomID = 0
 
-	app.listen(process.env.PORT || port, () => {
-		console.log(`server started!`)
+	app.listen(process.env.PORT || PORT, () => {
+		folder.listen(8000, () => {
+			console.log(`server started!`)
+		});
 	});
 }
 
