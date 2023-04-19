@@ -13,7 +13,7 @@ var roomsData = [];
 var username = `player${Math.floor(Math.random() * 1000)}`;
 var delay = ms => new Promise(res => setTimeout(res, ms));
 var flag = false;
-var serverIp = window.location.toString().split('/')[2].split(':')[0] + ':8000'
+var serverIp = 'https://' + window.location.toString().split('/')[2].split(':')[0] + ':8000'
 
 function ask(block) {
 	blockNow = block
@@ -110,7 +110,7 @@ function tableCreate(costs, topics) {
 async function fetchTable(type) {
 	//await delay(100)
 	//console.log('fetch')
-	fetch(`http://${serverIp}/fetch?${type == 'answer' ? `btnPos=${JSON.stringify(blockNow.pos)}&answer=${userAnswer}&` : ``}id=${roomId}&user=${username}&type=${type}${type == 'question-select' ? `&btnPos=${JSON.stringify(blockNow.pos)}` : ``}`)
+	fetch(`${serverIp}/fetch?${type == 'answer' ? `btnPos=${JSON.stringify(blockNow.pos)}&answer=${userAnswer}&` : ``}id=${roomId}&user=${username}&type=${type}${type == 'question-select' ? `&btnPos=${JSON.stringify(blockNow.pos)}` : ``}`)
 		.then(data => data.json())
 		.then(async function (data) {
 			processServerRes(data)
@@ -232,7 +232,7 @@ function join_room() {
 	document.getElementById('login').style.display = 'block'
 	document.getElementById('submit_username').style.display = 'block'
 
-	fetch(`http://${serverIp}/fetch?type=get-all`) //отправляем запрос на создание комнаты
+	fetch(`${serverIp}/fetch?type=get-all`) //отправляем запрос на создание комнаты
 		.then(data => data.json())
 		.then(async function (data) {
 			roomsData = data
@@ -281,7 +281,7 @@ function editTeam(elementID, defName) {
 }
 
 function submit_teams() {
-	fetch(`http://${serverIp}/fetch?type=create_room&teams=${JSON.stringify(teams)}`) //отправляем запрос на создание комнаты
+	fetch(`${serverIp}/fetch?type=create_room&teams=${JSON.stringify(teams)}`) //отправляем запрос на создание комнаты
 		.then(data => data.json())
 		.then(async function (data) {
 			document.getElementById('roomId').style.display = 'block'
