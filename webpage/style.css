@@ -107,6 +107,7 @@
 dialog[open] {
     -webkit-animation: show 1s ease normal;
 }
+
 @-webkit-keyframes show {
     from {
         transform: translateY(-110%);
@@ -173,9 +174,11 @@ dialog[open] {
 #balance_change {
     opacity: 0;
 }
+
 #question {
 	display: none;
 }
+
 #submit {
 	display: none;
 }
@@ -200,6 +203,15 @@ dialog[open] {
 .question-select {
 	width: 100%;
 	height: 100%;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 32px;
+	/* or 50% */
+	color: #FFFFFF;
+	
+	border-radius: 10px;
+	border:none;
 }
 
 .table-element {
@@ -238,6 +250,23 @@ dialog[open] {
 	background: #E2F5FF;
 	border: 2px solid #00A3FF;
 	border-radius: 10px;
+	margin-top: -1px;
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 16px;
+	color: rgba(0, 0, 0, 0.36);
+}
+
+#game-id{
+	box-sizing: border-box;
+	width: 350px;
+	height: 47px;
+	background: #E2F5FF;
+	border: 2px solid #00A3FF;
+	border-radius: 10px;
 
 
 	font-family: 'Inter';
@@ -249,7 +278,7 @@ dialog[open] {
 }
 
 #submit_username{
-	margin-top: 10px;
+	margin-top: 19px;
 	width: 155px;
 	height: 40px;
 	border-radius: 10px;
@@ -259,6 +288,20 @@ dialog[open] {
 	font-weight: 700;
 	font-size: 23px;
 	line-height: 16px;
+	border:none;
+}
+
+#login-back{
+	margin-top: 19px;
+	width: 155px;
+	height: 40px;
+	margin-bottom:10px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
 	border:none;
 }
 
@@ -277,6 +320,27 @@ dialog[open] {
 	flex-direction: column;
 	justify-content: center;
     align-items: center;
+	margin-top: 160px;
 }
+
+#marker {
+	font-family: 'Sansation';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 32px;
+	line-height: 16px;
+	/* or 25% */
+
+
+	color: #00A3FF;
+}
+
+#marker-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+}
+
 
 textarea {vertical-align:center;}

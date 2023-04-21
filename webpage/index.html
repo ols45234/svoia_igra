@@ -29,20 +29,23 @@
 		<div class="team" id="team-creating-ui" style="display:none">
 			<p id="information" style="display:block">Создание команд</p>
 			<!--<input type="text" id="team-create-name" maxlength="32" style="display:block">-->
+			<button id="login-back" onclick="backToMain('team-creating-ui')">&lt- назад</button>
 			<button id="create-team" type="button" onclick="create_team()" style="display:block">Добавить команду</button>
 			<button id="submit-teams" type="button" onclick="submit_teams()" style="display:block">Готово</button>
-			<button id="login-back" onclick="backToMain('team-creating-ui')">&lt- назад</button>
 			<div id="team"></div>
 			
 		</div>
 
 		<p id="roomId"></p>
-		<p id="marker" style="display:none"></p>
+		<div id="marker-div">
+			<p id="marker" style="display:none"></p>
+		</div>
 		
-		<div id="login" style="display:none" class = 'id'>
+		<div id="login" style="display:none" class='id'>
 			<input id="game-id"  placeholder="введите ID игры">
+			<br>
 			<input id="username" placeholder="имя команды">
-			<button id="submit_username" type="button" onclick="apply_username()">submit</button>
+			<button id="submit_username" type="button" onclick="apply_username()">войти</button>
 			<button id="login-back" onclick="backToMain('login')">&lt- назад</button>
 		</div>
         

@@ -229,7 +229,7 @@ function create_room() {
 function join_room() {
 
 	hideWeloceElements()
-	document.getElementById('login').style.display = 'block'
+	document.getElementById('login').style.display = 'flex'
 	document.getElementById('submit_username').style.display = 'block'
 
 	fetch(`${serverIp}/fetch?type=get-all`) //отправляем запрос на создание комнаты
