@@ -13,7 +13,7 @@ var roomsData = [];
 var username = `player${Math.floor(Math.random() * 1000)}`;
 var delay = ms => new Promise(res => setTimeout(res, ms));
 var flag = false;
-var serverIp = 'http://' + window.location.toString().split('/')[2].split(':')[0] + ':8000'
+var serverIp = 'https://' + window.location.toString().split('/')[2].split(':')[0] + ':8000'
 document.body.style.zoom="125%"
 
 function ask(block) {
