@@ -1,7 +1,11 @@
 ﻿console.log('loading...')
+console.log('loading xlsx...')
 const XLSX = require('xlsx');
+console.log('loading readline...')
 const readline = require('readline');
+console.log('loading express...')
 const express = require('express');
+console.log('loading body-parser...')
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -26,7 +30,7 @@ var result = [],
 	logs = [], //logs - брёвна
 	allRooms = {}
 	
-
+console.log('starting...')
 
 app.get('/fetch', function (req, res) {
 try {

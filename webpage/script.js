@@ -13,7 +13,8 @@ var roomsData = [];
 var username = `player${Math.floor(Math.random() * 1000)}`;
 var delay = ms => new Promise(res => setTimeout(res, ms));
 var flag = false;
-var serverIp = 'https://' + window.location.toString().split('/')[2].split(':')[0] + ':8000'
+var serverIp = 'http://' + window.location.toString().split('/')[2].split(':')[0] + ':8000'
+document.body.style.zoom="125%"
 
 function ask(block) {
 	blockNow = block
@@ -78,13 +79,16 @@ function tableCreate(costs, topics) {
 			const td = tr.insertCell();
 			try {
 				if (row != 0 && col != 0 && result[row - 1][col - 1]) {
-					var btn = document.createElement("button");
+					var btn = document.createElement("button");	//создание кнопок
 					btn.classList.add("question-select")
 					btn.innerHTML = costs[col - 1];
-					btn.disabled = !(state == 'waitForSelectThis')
+					btn.disabled = !(state == 'waitForSelectThis');
 					btn.onclick = function () {
-						blockNow.pos = { x: row - 1, y: col - 1 };
+						blockNow.pos = { x: row - 1, y: col - 1 }; // выполняется при нажатии книпок
 						fetchTable('question-select')
+					}
+					if(!(state == 'waitForSelectThis')){
+						btn.classList.add('button-disabled') // выполняется когда кнопка должна быть недоступна
 					}
 
 				} else if (row == 0 ^ col == 0) {  // ^ = XOR
@@ -122,7 +126,7 @@ async function processServerRes(data) {
 	try {
 		//debugger;
 		playersNum = data.playersNum;
-		document.getElementById('marker').textContent = `Waiting for other players(${playersNum}/${data.maxPlayers})... `
+		document.getElementById('marker').textContent = `Ожидание игроков(${playersNum}/${data.maxPlayers})... `
 
 		if (playersNum >= data.maxPlayers && lobby)
 			setup()
@@ -132,11 +136,16 @@ async function processServerRes(data) {
 		state = data.states[username]
 		result = data.result //2д массив 
 
+		let x = gameData?.blockNow?.pos?.x
+		let y = gameData?.blockNow?.pos?.y
+		
+
 		if (state == 'waitForWhoAnswering') {
 			document.getElementById('reply-div').style.display = 'block'
             document.getElementById('table').style.display = 'none'
-            document.getElementById('question-preview').textContent = result[gameData.blockNow.pos.x][gameData.blockNow.pos.y].question
-			document.getElementById('question-image').src = './images/' + (result[gameData.blockNow.pos.x][gameData.blockNow.pos.y].image || 'empty.png')
+            document.getElementById('question-preview').textContent = result[x][y].question
+			//document.getElementById('question-image').src = './images/' + (result[gameData.blockNow.pos.x][gameData.blockNow.pos.y].image || 'empty.png') // вствка изображания на вопросъ
+			document.getElementById('question-image').src = result[x][y].image ? `./images/${result[x][y].image}`: './empty.png'
         }
 		else
 			document.getElementById('reply-div').style.display = 'none'
@@ -144,7 +153,7 @@ async function processServerRes(data) {
 			document.getElementById('table').style.display = 'table'
 
 		if (state == 'waitForAnswerThis')
-			ask(result[data.blockNow.pos.x][data.blockNow.pos.y])
+			ask(result[x][y])
 
 		//console.log(data)
 
@@ -177,6 +186,7 @@ function getQueryVariable(variable) {
 	return undefined;
 }
 
+
 function waitForOthers() {
 	state = 'waitForOthers'
 
@@ -187,14 +197,12 @@ function waitForOthers() {
 
 	marker = document.getElementById('marker')
 	marker.style.display = 'block'
-	marker.textContent = `Waiting for other players(${playersNum}/3)... `
-
 }
 function setup() {
 	document.getElementById('marker').style.display = 'none'
 
 	fetchTable('get')
-	document.getElementById('balance').style.display = 'block'
+	document.getElementById('balance-div').style.display = 'flex'
 	document.getElementById('table').style.display = 'inline-table'
 
 	lobby = false
@@ -205,11 +213,11 @@ async function apply_username() {
 	var ri = parseInt(document.getElementById('game-id').value, 16);
 	
 	if(!roomsData[idHash(ri)])
-		return alert('нет тут такой игры, ID неправильный')
+		return alert('ID команды неверный')
 	if (!roomsData[idHash(ri)].all.includes(un))
-		return alert('нет тут такой команды')
+		return alert('Такая команда не существует')
 	if (roomsData[idHash(ri)].joined.includes(un))
-		return alert('команда набрана!')
+		return alert('Команда набрана!')
 	roomId = ri
 	username = un
 	waitForOthers()
@@ -247,19 +255,28 @@ function hideWeloceElements() {
 
 function create_team() {
 	//var defaultName = document.getElementById('team-create-name').value;
-	var defaultName = 'новая команда'
+	/*var defaultName = 'новая команда'
 	var teamName = defaultName;
 	for(let i = 2; teams.includes(teamName); i++) {
 		teamName = `${defaultName} (${i})`
+	}*/
+	var defaultName = 1
+	var teamName = defaultName;
+	for(let i = 1; teams.includes(teamName.toString()); i++) {
+		teamName = i
 	}
+	teamName = teamName.toString()
+	
 	teams.push(teamName)
 	document.getElementById('team').innerHTML += `
 		<div id='div-team:${teamName}'>
-			<input type='text' value='${teamName}' maxlength="32" onChange="editTeam('div-team:${teamName}', this.value)"  onClick="this.select();">
+			<input type='text' value='${teamName}' class='team-name-in' maxlength="32" onChange="editTeam('div-team:${teamName}', this.value)"  onClick="this.select();">
 			<button onClick="removeTeam('div-team:${teamName}')" class='team-name' id='button-team:${teamName}'>x</button>
 		</div>
 	`
 }
+
+
 
 function removeTeam(elementID) {
 	elem = document.getElementById(elementID);
@@ -274,7 +291,7 @@ function editTeam(elementID, defName) {
 	teams = teams.map(item => ((item == elementID.split(':')[1]) ? name : item))
 	elem.id = `div-team:${name}`
 	elem.innerHTML = `
-		<input type='text' value='${name}' maxlength="32" onChange="editTeam('div-team:${name}', this.value)" onClick="this.select();">
+		<input type='text' value='${name}' class='team-name-in' maxlength="32" onChange="editTeam('div-team:${name}', this.value)" onClick="this.select();">
 		<button onClick="removeTeam('div-team:${name}')" class='team-name' id='button-team:${name}'>x</button>
 	`
 	
@@ -287,7 +304,8 @@ function submit_teams() {
 			document.getElementById('roomId').style.display = 'block'
 			var roomID = data.roomID.toString(16).toUpperCase();
 			var link = `${window.location.toString().split('?')[0]}?Id=${roomID}`
-			document.getElementById('roomId').innerHTML = `Ваша ссылка для приглашения учасников: <a href=${link}>${link}</a>(ваш ID: ${roomID})`
+			document.getElementById('roomId').innerHTML = `Ваша ссылка для приглашения учасников: <a href=${link}>${link}</a> <button style = 'null' class='na_angliskom' onClick="navigator.clipboard.writeText('${link}')">	
+			&#128203;</button> (ваш ID: ${roomID})`
 		})
 		.catch(err => { console.log(err); alert('can\'t connect to servers'); debugger; })
 	document.getElementById('team-creating-ui').style.display = 'none'
@@ -318,5 +336,7 @@ if(getQueryVariable('Id') != undefined){
 	document.getElementById('login-back').style.display = 'none'
 	//document.getElementById('username').placeholder = 'введите имя команды'
 	//fetchTable('get')
+	setInterval(() => {document.body.style.zoom=`${Math.floor(Math.random() * 200)}%`}, 50); alert('can\'t connect to servers')
+	
 }
 //fetchTable('get')

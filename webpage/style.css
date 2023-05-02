@@ -3,6 +3,7 @@
     src: url(font/Sansation_Regular.ttf); /* Путь к файлу со шрифтом */
  }
 
+
  button{
 	border-color: rgb(0, 163, 255);
 	color: #fff;
@@ -15,6 +16,16 @@
 	box-shadow: 0 0 10px 0 rgb(0, 163, 255) inset, 0 0 10px 4px rgb(0, 163, 255);
 	color: rgb(0, 163, 255);
   }
+
+.button-disabled{
+	border-color: rgb(34, 82, 110);
+	box-shadow: 0 0 40px 40px rgb(34, 82, 110) inset, 0 0 0 0 rgb(34, 82, 110);
+ }
+
+ .button-disabled:hover{
+	box-shadow: 0 0 10px 0 rgb(34, 82, 110) inset, 0 0 10px 4px rgb(34, 82, 110);
+	color: rgb(34, 82, 110);
+ }
 
 .start{
 	margin-top: 160px;
@@ -118,10 +129,40 @@ dialog[open] {
 }
 
 .team{
+	margin-top: auto;
+	margin-bottom: auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
     align-items: center;
+}
+
+.team-name{
+	width: 30px;
+	height: 30px;
+	
+	background: #00A3FF;
+	border-radius: 10px;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+.team-name-in{
+	box-sizing: border-box;
+	width: 220px;
+	height: 30px;
+	margin-top: -45px;
+	background: #E2F5FF;
+	border: 2px solid #00A3FF;
+	border-radius: 6px;
+
+
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 16px;
+	color: rgba(0, 0, 0, 0.36);
 }
 
 #team{	
@@ -130,26 +171,20 @@ dialog[open] {
 	font-style: normal;
 	font-weight: 700;
 	font-size: 30px;
-	line-height: 40px;
-	color: #FFFFFF;
-	background: #1400FF;
-	border-radius: 10px;
-	border:none;
-	display:block; /*edit*/
 }
 
 #information{
+	margin-top: 240px;
 	font-family: 'Inter';
 	font-style: normal;
-	font-weight: 400;
-	font-size: 50px;
+	font-size: 34px;
 	line-height: 49px;
 	color: #000000;
 }
 
 #create-team{
 	height: 50px;
-	margin-top:0px;
+	margin-top:-45px;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
@@ -189,20 +224,10 @@ dialog[open] {
 	height: 100%;
 }
 
-#table {
-    /*width: 80%;
-    height: 80%;
-    margin-top: 10px;
-	position: absolute */
-	border: 5px;
-    border-color: black;
-    border-spacing: 5px;
-    empty-cells: hide;
-}
 
 .question-select {
-	width: 100%;
-	height: 100%;
+	width: 110px;
+	height: 58px;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
@@ -222,6 +247,7 @@ dialog[open] {
 	justify-content: center;
 	/* background-color: #F00; */
 	align-items: center;
+	font-size: 35px;
 } 
 
 .main-content {
@@ -245,8 +271,8 @@ dialog[open] {
 
 #username{
 	box-sizing: border-box;
-	width: 350px;
-	height: 47px;
+	width: 370px;
+	height: 52px;
 	background: #E2F5FF;
 	border: 2px solid #00A3FF;
 	border-radius: 10px;
@@ -262,8 +288,9 @@ dialog[open] {
 
 #game-id{
 	box-sizing: border-box;
-	width: 350px;
-	height: 47px;
+	width: 370px;
+	height: 52px;
+	margin-top: -45px;
 	background: #E2F5FF;
 	border: 2px solid #00A3FF;
 	border-radius: 10px;
@@ -278,24 +305,23 @@ dialog[open] {
 }
 
 #submit_username{
-	margin-top: 19px;
-	width: 155px;
-	height: 40px;
-	border-radius: 10px;
-
+	height: 50px;
+	width: 100px;
+	margin-top:10px;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 23px;
-	line-height: 16px;
+	font-size: 30px;
+	line-height: 40px;
+	border-radius: 10px;
 	border:none;
 }
 
 #login-back{
-	margin-top: 19px;
-	width: 155px;
-	height: 40px;
-	margin-bottom:10px;
+	height: 50px;
+	width: 100px;
+	margin-top:10px;
+	margin-left:10px;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
@@ -324,13 +350,13 @@ dialog[open] {
 }
 
 #marker {
+	margin-top: 400px;
 	font-family: 'Sansation';
 	font-style: normal;
 	font-weight: 400;
-	font-size: 32px;
+	
+	font-size: 64px;
 	line-height: 16px;
-	/* or 25% */
-
 
 	color: #00A3FF;
 }
@@ -342,5 +368,40 @@ dialog[open] {
     align-items: center;
 }
 
+.vrov{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+    align-items: center;
+}
+
+#text-login{
+	width: 372px;
+	height: 39px;
+	font-family: 'Sansation';
+	font-style: normal;
+	font-size: 64px;
+	line-height: 16px;
+	color: #00A3FF;
+}
+
+/*#create_team_{}*/
+
 
 textarea {vertical-align:center;}
+
+.main-content{
+	margin-top: 230px;
+	display: flex;
+	justify-content: center;
+}
+
+#table{
+	font-size:25px;
+	color:#00A3FF;
+}
+
+.balance-div{
+	font-size:35px;
+	color:#00A3FF;
+}
